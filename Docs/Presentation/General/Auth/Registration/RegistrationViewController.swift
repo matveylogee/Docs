@@ -50,9 +50,7 @@ class RegistrationViewController: UIViewController {
     private let descriptionLabel: UILabel = {
         let lbl = UILabel()
         lbl.text = """
-        Please fill in the information below to create your account. This account \
-        will be part of your family until the child is at least 13 years old. \
-        You must be an adult and child's parent or legal guardian to provide consent.
+        Please fill in the information below to create your account. This will be used in the preparation of documents. The information can be changed in the settings.
         """
         lbl.font = .systemFont(ofSize: 16)
         lbl.textAlignment = .center
@@ -66,7 +64,7 @@ class RegistrationViewController: UIViewController {
     
     private let bottomNoteLabel: UILabel = {
         let lbl = UILabel()
-        lbl.text = "By creating an account, you agree to our Terms and Privacy Policy..."
+        lbl.text = "By creating an account, you agree to our Terms and Privacy Policy."
         lbl.font = .systemFont(ofSize: 12)
         lbl.textAlignment = .center
         lbl.numberOfLines = 0

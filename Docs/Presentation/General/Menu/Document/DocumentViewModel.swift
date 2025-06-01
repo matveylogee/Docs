@@ -60,12 +60,14 @@ final class DocumentViewModel: DocumentViewModelProtocol {
     ) {
         Task {
             do {
-                let user: UserPublic = try await network.request(endpoint: UserEndpoint.me, requestDTO: EmptyRequest())
+                let user: UserPublic = try await network.request(
+                    endpoint: UserEndpoint.me,
+                    requestDTO: EmptyRequest()
+                )
                 
-                /// Генерация PDF в Data
-                let baseName = "\(name) \(composition)"
-                let fileName = baseName + ".pdf"
-                let pdfData  = PDFCreator(
+                let fileName = "\(nickname) \(composition).pdf"
+                
+                let pdfData = PDFCreator(
                     producerName: user.username,
                     name: name,
                     nickname: nickname,
@@ -74,16 +76,18 @@ final class DocumentViewModel: DocumentViewModelProtocol {
                     experience: experience
                 ).pdfCreateData(fileName: fileName)
                 
-                /// Сохраняем во временный файл
-                let tmpURL = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + "_\(fileName)")
+                let tmpURL = FileManager.default.temporaryDirectory
+                    .appendingPathComponent(fileName)
                 do {
+                    if FileManager.default.fileExists(atPath: tmpURL.path) {
+                        try FileManager.default.removeItem(at: tmpURL)
+                    }
                     try pdfData.write(to: tmpURL, options: .atomic)
                 } catch {
-                    onError?("Не удалось сохранить во временный файл")
+                    onError?("Не удалось сохранить PDF во временный файл: \(error.localizedDescription)")
                     return
                 }
                 
-                /// DTO для бэка
                 let dto = CreateDocumentRequest(
                     fileType:    experience.rawValue,
                     createTime:  currentDate.pdfCreateTimestamp(),
@@ -95,10 +99,28 @@ final class DocumentViewModel: DocumentViewModelProtocol {
                     isFavorite:       isFavorite
                 )
                 
-                /// Асинхронная загрузка + копирование в локальную библиотеку
                 let uploaded = try await network.uploadDocument(fileURL: tmpURL, metadata: dto)
                 
+                do {
+                    let libraryFolder = FileManager.pdfLibraryURL
+                    let libraryURL = libraryFolder.appendingPathComponent(uploaded.fileName)
+                    
+                    try FileManager.default.createDirectory(
+                        at: libraryFolder,
+                        withIntermediateDirectories: true,
+                        attributes: nil
+                    )
+                    
+                    if FileManager.default.fileExists(atPath: libraryURL.path) {
+                        try FileManager.default.removeItem(at: libraryURL)
+                    }
+                    try FileManager.default.copyItem(at: tmpURL, to: libraryURL)
+                } catch {
+                    print("⚠️ Не удалось скопировать PDF в библиотеку: \(error.localizedDescription)")
+                }
+                
                 onSuccess?(uploaded)
+                
             } catch {
                 onError?(error.localizedDescription)
             }
@@ -115,26 +137,36 @@ final class DocumentViewModel: DocumentViewModelProtocol {
     ) {
         Task {
             do {
-                let user: UserPublic = try await network.request(endpoint: UserEndpoint.me, requestDTO: EmptyRequest())
+                let user: UserPublic = try await network.request(
+                    endpoint: UserEndpoint.me,
+                    requestDTO: EmptyRequest()
+                )
                 
-                let fileName = "\(name)_\(composition).pdf"
-                let pdfData  = PDFCreator(
+                let previewFileName = "\(nickname) \(composition).pdf"
+                
+                let pdfData = PDFCreator(
                     producerName: user.username,
                     name: name,
                     nickname: nickname,
                     composition: composition,
                     price: price,
                     experience: experience
-                ).pdfCreateData(fileName: fileName)
+                ).pdfCreateData(fileName: previewFileName)
                 
-                let tmpURL = FileManager.default.temporaryDirectory
-                    .appendingPathComponent(UUID().uuidString + ".pdf")
+                let tmpPreviewURL = FileManager.default.temporaryDirectory
+                    .appendingPathComponent(previewFileName)
+                
                 do {
-                    try pdfData.write(to: tmpURL, options: .atomic)
-                    onPreview?(tmpURL)
+                    if FileManager.default.fileExists(atPath: tmpPreviewURL.path) {
+                        try FileManager.default.removeItem(at: tmpPreviewURL)
+                    }
+                    try pdfData.write(to: tmpPreviewURL, options: .atomic)
+                    onPreview?(tmpPreviewURL)
                 } catch {
-                    onError?("Не удалось создать превью PDF")
+                    onError?("Не удалось создать превью PDF: \(error.localizedDescription)")
                 }
+            } catch {
+                onError?(error.localizedDescription)
             }
         }
     }
