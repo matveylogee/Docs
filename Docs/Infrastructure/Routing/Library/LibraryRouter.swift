@@ -121,7 +121,6 @@ final class LibraryRouter: NSObject, LibraryRouterProtocol {
     }
     
     // MARK: - Delete Confirmation
-
     func confirmDelete(
         document: DocumentDTO,
         onConfirm: @escaping () -> Void,
@@ -139,7 +138,6 @@ final class LibraryRouter: NSObject, LibraryRouterProtocol {
     }
 
     // MARK: - Comment Options
-
     func presentCommentOptions(
         document: DocumentDTO,
         initialText: String,
@@ -149,7 +147,6 @@ final class LibraryRouter: NSObject, LibraryRouterProtocol {
     ) {
         guard let vc = viewController else { return }
         if initialText.isEmpty {
-            // сразу редактировать
             onEdit()
         } else {
             let sheet = UIAlertController(title: nil,
@@ -163,7 +160,6 @@ final class LibraryRouter: NSObject, LibraryRouterProtocol {
     }
 
     // MARK: - Comment Editor
-
     func presentCommentEditor(
         initialText: String,
         for document: DocumentDTO,
@@ -177,18 +173,18 @@ final class LibraryRouter: NSObject, LibraryRouterProtocol {
         )
         alert.addTextField {
             $0.placeholder = "Your Comment"
-            $0.text        = initialText
+            $0.text = initialText
         }
         alert.addAction(.init(title: "Cancel", style: .cancel))
         alert.addAction(.init(title: "Save", style: .default) { _ in
             let text = alert.textFields?.first?.text ?? ""
             onSave(text)
         })
+        alert.view.tintColor = UIColor(hex: "5E5CE7")
         vc.present(alert, animated: true)
     }
 
     // MARK: - Generic Alert
-
     func presentAlert(title: String, message: String?) {
         guard let vc = viewController else { return }
         let alert = UIAlertController(
@@ -202,7 +198,6 @@ final class LibraryRouter: NSObject, LibraryRouterProtocol {
 }
 
 // MARK: - QLPreviewControllerDataSource & Delegate
-
 extension LibraryRouter: QLPreviewControllerDataSource, QLPreviewControllerDelegate {
 
     func numberOfPreviewItems(in controller: QLPreviewController) -> Int {

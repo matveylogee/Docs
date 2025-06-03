@@ -36,7 +36,7 @@ final class ProfileDetailViewController: UITableViewController {
     // MARK: — Dependencies & state
     private let viewModel: ProfileViewModelProtocol
     private var fieldValues: [Field: String?] = [:]
-    private var dataSource: UITableViewDiffableDataSource<Section,Field>!
+    private var dataSource: UITableViewDiffableDataSource<Section, Field>!
 
     // MARK: — UI
     private let avatarImageView = UIImageView()
