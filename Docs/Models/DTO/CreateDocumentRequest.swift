@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CreateDocumentRequest: Encodable {
+struct CreateDocumentRequest: Codable {
     let fileType: String
     let createTime: String     
     let artistName: String

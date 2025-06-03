@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 enum UserEndpoint: Endpoint {
     case me
     case update(request: UpdateUserDTO)

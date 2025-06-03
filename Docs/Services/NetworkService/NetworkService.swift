@@ -22,10 +22,12 @@ protocol NetworkServiceProtocol {
 
 final class NetworkService: NetworkServiceProtocol {
     
-    private let session: URLSession
+    private let session: URLSessionProtocol
     private let tokenProvider: TokenProviderProtocol
 
-    init(session: URLSession = .shared, tokenProvider: TokenProviderProtocol) {
+    init(session: URLSessionProtocol = URLSession.shared,
+         tokenProvider: TokenProviderProtocol
+    ) {
         self.session = session
         self.tokenProvider = tokenProvider
     }

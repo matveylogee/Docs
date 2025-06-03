@@ -29,7 +29,7 @@ final class AppDIContainer: DIContainerProtocol {
         self.tokenProvider = provider
 
         self.dateService = CurrentDate()
-        self.networkService = NetworkService(session: .shared, tokenProvider: provider)
+        self.networkService = NetworkService(session: URLSession.shared, tokenProvider: provider)
     }
 
     // MARK: - Auth Flow Start

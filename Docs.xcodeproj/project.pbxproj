@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -54,6 +54,7 @@
 		BAD0F8112DD4DE3200F438D9 /* WelcomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD0F8102DD4DE3200F438D9 /* WelcomeRouter.swift */; };
 		BAD0F8162DD4E47E00F438D9 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD0F8152DD4E47E00F438D9 /* LoginRouter.swift */; };
 		BAD0F97A2DD512B700F438D9 /* LibraryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD0F9792DD512B700F438D9 /* LibraryRouter.swift */; };
+		BADD33432DEF39D200E42937 /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADD33422DEF39D200E42937 /* URLSession.swift */; };
 		BAE179192B98C04200CCE9AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE179182B98C04200CCE9AB /* AppDelegate.swift */; };
 		BAE1791B2B98C04200CCE9AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE1791A2B98C04200CCE9AB /* SceneDelegate.swift */; };
 		BAE1791D2B98C04200CCE9AB /* DocumentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE1791C2B98C04200CCE9AB /* DocumentController.swift */; };
@@ -97,6 +98,16 @@
 		BAEAC1DE2DC6816E00DE56F4 /* UIView+AppGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEAC1DD2DC6816E00DE56F4 /* UIView+AppGradient.swift */; };
 		BAFA3E992D87253E007ACD38 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFA3E982D87253E007ACD38 /* UIView+Extensions.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BADD333D2DEF376500E42937 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BAE1790D2B98C04200CCE9AB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BAE179142B98C04200CCE9AB;
+			remoteInfo = Docs;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		BA0F68772BA47FD500DD6B48 /* PDFCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFCreator.swift; sourceTree = "<group>"; };
@@ -146,6 +157,8 @@
 		BAD0F8102DD4DE3200F438D9 /* WelcomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeRouter.swift; sourceTree = "<group>"; };
 		BAD0F8152DD4E47E00F438D9 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
 		BAD0F9792DD512B700F438D9 /* LibraryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryRouter.swift; sourceTree = "<group>"; };
+		BADD33392DEF376500E42937 /* DocsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DocsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BADD33422DEF39D200E42937 /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
 		BAE179152B98C04200CCE9AB /* Docs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Docs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAE179182B98C04200CCE9AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BAE1791A2B98C04200CCE9AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -192,7 +205,18 @@
 		BAFA3E982D87253E007ACD38 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		BADD333A2DEF376500E42937 /* DocsTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = DocsTests; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
+		BADD33362DEF376500E42937 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BAE179122B98C04200CCE9AB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -458,6 +482,7 @@
 			isa = PBXGroup;
 			children = (
 				BAE179172B98C04200CCE9AB /* Docs */,
+				BADD333A2DEF376500E42937 /* DocsTests */,
 				BAE179162B98C04200CCE9AB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -466,6 +491,7 @@
 			isa = PBXGroup;
 			children = (
 				BAE179152B98C04200CCE9AB /* Docs.app */,
+				BADD33392DEF376500E42937 /* DocsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -543,6 +569,7 @@
 				BAE377E72DE25E81003859B6 /* Data */,
 				BAE377D82DE25D10003859B6 /* NetworkService.swift */,
 				BAE378BE2DE4A279003859B6 /* AuthTokenStorage.swift */,
+				BADD33422DEF39D200E42937 /* URLSession.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -695,6 +722,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		BADD33382DEF376500E42937 /* DocsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BADD33412DEF376500E42937 /* Build configuration list for PBXNativeTarget "DocsTests" */;
+			buildPhases = (
+				BADD33352DEF376500E42937 /* Sources */,
+				BADD33362DEF376500E42937 /* Frameworks */,
+				BADD33372DEF376500E42937 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BADD333E2DEF376500E42937 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				BADD333A2DEF376500E42937 /* DocsTests */,
+			);
+			name = DocsTests;
+			packageProductDependencies = (
+			);
+			productName = DocsTests;
+			productReference = BADD33392DEF376500E42937 /* DocsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		BAE179142B98C04200CCE9AB /* Docs */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BAE179292B98C04400CCE9AB /* Build configuration list for PBXNativeTarget "Docs" */;
@@ -719,9 +769,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
+				LastSwiftUpdateCheck = 1630;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
+					BADD33382DEF376500E42937 = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = BAE179142B98C04200CCE9AB;
+					};
 					BAE179142B98C04200CCE9AB = {
 						CreatedOnToolsVersion = 15.0;
 					};
@@ -741,11 +795,19 @@
 			projectRoot = "";
 			targets = (
 				BAE179142B98C04200CCE9AB /* Docs */,
+				BADD33382DEF376500E42937 /* DocsTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		BADD33372DEF376500E42937 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BAE179132B98C04200CCE9AB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -758,12 +820,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		BADD33352DEF376500E42937 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BAE179112B98C04200CCE9AB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				BAE377E22DE25E26003859B6 /* HTTPMethod.swift in Sources */,
 				BAE378B02DE381BA003859B6 /* CreateDocumentRequest.swift in Sources */,
+				BADD33432DEF39D200E42937 /* URLSession.swift in Sources */,
 				BAAE15AF2D303E2F0046A9E9 /* RegistrationViewController.swift in Sources */,
 				BAADFBDA2D8CEBCA003ABB28 /* MenuRouter.swift in Sources */,
 				BAE378BD2DE3B026003859B6 /* LibraryViewModel.swift in Sources */,
@@ -854,6 +924,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		BADD333E2DEF376500E42937 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BAE179142B98C04200CCE9AB /* Docs */;
+			targetProxy = BADD333D2DEF376500E42937 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		BAE179232B98C04400CCE9AB /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -866,6 +944,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		BADD333F2DEF376500E42937 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VTVX47N2X6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sw---.DocsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Docs.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Docs";
+			};
+			name = Debug;
+		};
+		BADD33402DEF376500E42937 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VTVX47N2X6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sw---.DocsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Docs.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Docs";
+			};
+			name = Release;
+		};
 		BAE179272B98C04400CCE9AB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1048,6 +1164,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		BADD33412DEF376500E42937 /* Build configuration list for PBXNativeTarget "DocsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BADD333F2DEF376500E42937 /* Debug */,
+				BADD33402DEF376500E42937 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		BAE179102B98C04200CCE9AB /* Build configuration list for PBXProject "Docs" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

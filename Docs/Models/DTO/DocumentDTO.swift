@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DocumentDTO: Decodable, Hashable {
+struct DocumentDTO: Codable, Hashable {
     let id: UUID
     let fileName: String
     let fileURL: String
