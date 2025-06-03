@@ -1,7 +1,6 @@
 import XCTest
 @testable import Docs
 
-// MARK: - Тесты для LoginViewModel
 final class LoginViewModelTests: XCTestCase {
 
     private var viewModel: LoginViewModel!
