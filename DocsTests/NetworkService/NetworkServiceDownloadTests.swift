@@ -5,7 +5,7 @@ final class NetworkServiceDownloadTests: XCTestCase {
     
     /// 6) Проверка downloadDocument → возвращаем URL файла
     func testDownloadDocument_Successful200_ReturnsLocalFileURL() async throws {
-        // Arrange
+        
         let tempDownloadedURL = URL(fileURLWithPath: NSTemporaryDirectory())
             .appendingPathComponent("out.pdf")
 
@@ -26,10 +26,8 @@ final class NetworkServiceDownloadTests: XCTestCase {
 
         let docID = UUID(uuidString: "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE")!
 
-        // Act
         let returnedURL = try await service.downloadDocument(id: docID)
 
-        // Assert
         XCTAssertEqual(returnedURL, tempDownloadedURL)
 
         let lastReq = sessionMock.lastRequest!
@@ -46,7 +44,7 @@ final class NetworkServiceDownloadTests: XCTestCase {
 
     /// 7) Проверка downloadDocument при ошибке → выбрасывается URLError
     func testDownloadDocument_UnderlyingError_Throws() async throws {
-        // Arrange
+
         let underlying = URLError(.notConnectedToInternet)
         let sessionMock = URLSessionMock()
         sessionMock.nextDownloadError = underlying
@@ -58,7 +56,6 @@ final class NetworkServiceDownloadTests: XCTestCase {
         )
         let docID = UUID()
 
-        // Act + Assert
         do {
             _ = try await service.downloadDocument(id: docID)
             XCTFail("Ожидали URLError, но получили URL.")

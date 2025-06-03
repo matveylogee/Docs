@@ -5,7 +5,7 @@ final class NetworkServiceGenericTests: XCTestCase {
     
     /// 1) Проверим, что request<Req,Res> при 200 возвращает Decodable-модель
     func testRequest_Successful200_ReturnsDecodedModel() async throws {
-        // Arrange
+        
         let dummy = DummyResponse(id: 123, name: "Тестовый")
         let jsonData = try JSONEncoder().encode(dummy)
 
@@ -35,13 +35,13 @@ final class NetworkServiceGenericTests: XCTestCase {
             bodyData: nil
         )
 
-        // Act
+        
         let result: DummyResponse = try await service.request(
             endpoint: fakeEndpoint,
             requestDTO: EmptyRequest()
         )
 
-        // Assert
+        
         XCTAssertEqual(result, dummy)
 
         let lastReq = sessionMock.lastRequest!
@@ -57,7 +57,7 @@ final class NetworkServiceGenericTests: XCTestCase {
 
     /// 2) Проверим, что при статусе 404 выбрасывается NetworkError.serverError
     func testRequest_Status404_ThrowsServerError() async throws {
-        // Arrange
+        
         let errorMessage = "Not found"
         let data = Data(errorMessage.utf8)
         let url = URL(string: "https://example.com/v1/notfound")!
@@ -86,7 +86,6 @@ final class NetworkServiceGenericTests: XCTestCase {
             bodyData: nil
         )
 
-        // Act + Assert
         do {
             let _: DummyResponse = try await service.request(
                 endpoint: fakeEndpoint,
@@ -104,7 +103,7 @@ final class NetworkServiceGenericTests: XCTestCase {
 
     /// 3) Проверим, что baseURL = nil даёт NetworkError.invalidURL
     func testRequest_InvalidURL_ThrowsInvalidURL() async throws {
-        // Arrange
+        
         let sessionMock = URLSessionMock()
         let tokenMock = TokenProviderMock(token: nil)
         let service = NetworkService(
@@ -120,7 +119,6 @@ final class NetworkServiceGenericTests: XCTestCase {
             bodyData: nil
         )
 
-        // Act + Assert
         do {
             let _: DummyResponse = try await service.request(
                 endpoint: badEndpoint,
@@ -136,7 +134,7 @@ final class NetworkServiceGenericTests: XCTestCase {
 
     /// 4) Проверим, что «плохой» JSON даёт NetworkError.decodingError
     func testRequest_InvalidJSON_ThrowsDecodingError() async throws {
-        // Arrange
+        
         let brokenJSON = #" { "id": "нечисло", "name": 123 } "#.data(using: .utf8)!
 
         let url = URL(string: "https://example.com/v1/test")!
@@ -165,7 +163,6 @@ final class NetworkServiceGenericTests: XCTestCase {
             bodyData: nil
         )
 
-        // Act + Assert
         do {
             let _: DummyResponse = try await service.request(
                 endpoint: fakeEndpoint,

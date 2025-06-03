@@ -5,7 +5,7 @@ final class NetworkServiceDocumentCRUDTests: XCTestCase {
 
     /// 8) Проверка listDocuments (GET /documents) «хэппи-пасс»
     func testListDocuments_Successful200_ReturnsArrayOfDocumentDTO() async throws {
-        // Arrange
+        
         let doc1 = DocumentDTO(
             id: UUID(uuidString: "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE")!,
             fileName:        "Doc1.pdf",
@@ -19,6 +19,7 @@ final class NetworkServiceDocumentCRUDTests: XCTestCase {
             compositionName: "Comp1",
             price:           "10"
         )
+        
         let doc2 = DocumentDTO(
             id: UUID(uuidString: "BBBBBBBB-CCCC-DDDD-EEEE-FFFFFFFFFFFF")!,
             fileName:        "Doc2.pdf",
@@ -32,10 +33,10 @@ final class NetworkServiceDocumentCRUDTests: XCTestCase {
             compositionName: "Comp2",
             price:           "20"
         )
+        
         let docsArray = [doc1, doc2]
         let jsonData = try JSONEncoder().encode(docsArray)
 
-        // Реальный URL для DocumentEndpoint.list
         let url = URL(string: "http://127.0.0.1:8080/api/v1/documents")!
         let httpResponse = HTTPURLResponse(
             url: url,
@@ -54,10 +55,8 @@ final class NetworkServiceDocumentCRUDTests: XCTestCase {
             tokenProvider: tokenMock
         )
 
-        // Act
         let returnedDocs: [DocumentDTO] = try await service.listDocuments()
 
-        // Assert
         XCTAssertEqual(returnedDocs, docsArray)
 
         let lastReq = sessionMock.lastRequest!
@@ -74,7 +73,7 @@ final class NetworkServiceDocumentCRUDTests: XCTestCase {
 
     /// 9) Проверка listDocuments при ошибке (например, 500) → throws serverError
     func testListDocuments_Status500_ThrowsServerError() async throws {
-        // Arrange
+        
         let errorMessage = "Server down"
         let data = Data(errorMessage.utf8)
         let url = URL(string: "http://127.0.0.1:8080/api/v1/documents")!
@@ -95,7 +94,6 @@ final class NetworkServiceDocumentCRUDTests: XCTestCase {
             tokenProvider: tokenMock
         )
 
-        // Act + Assert
         do {
             let _: [DocumentDTO] = try await service.listDocuments()
             XCTFail("Ожидали NetworkError.serverError, но успело вернуться значение")
@@ -110,7 +108,7 @@ final class NetworkServiceDocumentCRUDTests: XCTestCase {
 
     /// 10) Проверка getDocument (GET /documents/{id}) «хэппи-пасс»
     func testGetDocument_Successful200_ReturnsDocumentDTO() async throws {
-        // Arrange
+        
         let docID = UUID(uuidString: "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE")!
         let dummyDoc = DocumentDTO(
             id: docID,
@@ -145,10 +143,8 @@ final class NetworkServiceDocumentCRUDTests: XCTestCase {
             tokenProvider: tokenMock
         )
 
-        // Act
         let returnedDoc: DocumentDTO = try await service.getDocument(id: docID)
 
-        // Assert
         XCTAssertEqual(returnedDoc, dummyDoc)
 
         let lastReq = sessionMock.lastRequest!
@@ -165,7 +161,7 @@ final class NetworkServiceDocumentCRUDTests: XCTestCase {
 
     /// 11) Проверка getDocument при статусе 404 → throws serverError
     func testGetDocument_Status404_ThrowsServerError() async throws {
-        // Arrange
+        
         let docID = UUID(uuidString: "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE")!
         let errorMessage = "Not found"
         let data = Data(errorMessage.utf8)
@@ -187,7 +183,6 @@ final class NetworkServiceDocumentCRUDTests: XCTestCase {
             tokenProvider: tokenMock
         )
 
-        // Act + Assert
         do {
             let _: DocumentDTO = try await service.getDocument(id: docID)
             XCTFail("Ожидали NetworkError.serverError, но получили успех")
@@ -202,12 +197,13 @@ final class NetworkServiceDocumentCRUDTests: XCTestCase {
 
     /// 12) Проверка updateDocument (PUT /documents/{id}) «хэппи-пасс»
     func testUpdateDocument_Successful200_ReturnsDocumentDTO() async throws {
-        // Arrange
+        
         let docID = UUID(uuidString: "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE")!
         let updateReq = UpdateDocumentRequest(
             comment:    "New note",
             isFavorite: true
         )
+        
         let dummyDoc = DocumentDTO(
             id: docID,
             fileName:        "Doc1.pdf",
@@ -241,13 +237,11 @@ final class NetworkServiceDocumentCRUDTests: XCTestCase {
             tokenProvider: tokenMock
         )
 
-        // Act
         let returnedDoc: DocumentDTO = try await service.updateDocument(
             id: docID,
             update: updateReq
         )
 
-        // Assert
         XCTAssertEqual(returnedDoc, dummyDoc)
 
         let lastReq = sessionMock.lastRequest!
@@ -260,7 +254,7 @@ final class NetworkServiceDocumentCRUDTests: XCTestCase {
             lastReq.value(forHTTPHeaderField: "Authorization"),
             "Bearer tokXYZ"
         )
-        // Тело должно содержать JSON с полями "comment" и "isFavorite"
+        
         let bodyString = String(data: lastReq.httpBody!, encoding: .utf8) ?? ""
         XCTAssertTrue(
             bodyString.contains("\"comment\":\"New note\"") &&
@@ -271,7 +265,7 @@ final class NetworkServiceDocumentCRUDTests: XCTestCase {
 
     /// 13) Проверка updateDocument при статусе 400 → throws serverError
     func testUpdateDocument_Status400_ThrowsServerError() async throws {
-        // Arrange
+        
         let docID = UUID(uuidString: "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE")!
         let updateReq = UpdateDocumentRequest(
             comment:    "New note",
@@ -297,7 +291,6 @@ final class NetworkServiceDocumentCRUDTests: XCTestCase {
             tokenProvider: tokenMock
         )
 
-        // Act + Assert
         do {
             let _: DocumentDTO = try await service.updateDocument(
                 id: docID,
@@ -315,7 +308,7 @@ final class NetworkServiceDocumentCRUDTests: XCTestCase {
 
     /// 14) Проверка deleteDocument (DELETE /documents/{id}) «хэппи-пасс»
     func testDeleteDocument_Successful200_CompletesWithoutError() async throws {
-        // Arrange
+        
         let docID = UUID(uuidString: "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE")!
         let url = URL(string: "http://127.0.0.1:8080/api/v1/documents/\(docID.uuidString)")!
         let httpResponse = HTTPURLResponse(
@@ -334,10 +327,8 @@ final class NetworkServiceDocumentCRUDTests: XCTestCase {
             tokenProvider: tokenMock
         )
 
-        // Act (должен завершиться без ошибок)
         try await service.deleteDocument(id: docID)
 
-        // Assert
         let lastReq = sessionMock.lastRequest!
         XCTAssertEqual(lastReq.httpMethod, "DELETE")
         XCTAssertEqual(
@@ -352,7 +343,7 @@ final class NetworkServiceDocumentCRUDTests: XCTestCase {
 
     /// 15) Проверка deleteDocument при статусе 500 → throws serverError
     func testDeleteDocument_Status500_ThrowsServerError() async throws {
-        // Arrange
+        
         let docID = UUID(uuidString: "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE")!
         let url = URL(string: "http://127.0.0.1:8080/api/v1/documents/\(docID.uuidString)")!
         let httpResponse = HTTPURLResponse(
@@ -371,7 +362,6 @@ final class NetworkServiceDocumentCRUDTests: XCTestCase {
             tokenProvider: tokenMock
         )
 
-        // Act + Assert
         do {
             try await service.deleteDocument(id: docID)
             XCTFail("Ожидали NetworkError.serverError, но получили завершение")
@@ -385,7 +375,7 @@ final class NetworkServiceDocumentCRUDTests: XCTestCase {
 
     /// 16) Проверка deleteAllDocuments (DELETE /documents) «хэппи-пасс»
     func testDeleteAllDocuments_Successful200_CompletesWithoutError() async throws {
-        // Arrange
+        
         let url = URL(string: "http://127.0.0.1:8080/api/v1/documents")!
         let httpResponse = HTTPURLResponse(
             url: url,
@@ -403,10 +393,8 @@ final class NetworkServiceDocumentCRUDTests: XCTestCase {
             tokenProvider: tokenMock
         )
 
-        // Act (должен завершиться без ошибок)
         try await service.deleteAllDocuments()
 
-        // Assert
         let lastReq = sessionMock.lastRequest!
         XCTAssertEqual(lastReq.httpMethod, "DELETE")
         XCTAssertEqual(
@@ -421,7 +409,7 @@ final class NetworkServiceDocumentCRUDTests: XCTestCase {
 
     /// 17) Проверка deleteAllDocuments при статусе 500 → throws serverError
     func testDeleteAllDocuments_Status500_ThrowsServerError() async throws {
-        // Arrange
+        
         let url = URL(string: "http://127.0.0.1:8080/api/v1/documents")!
         let httpResponse = HTTPURLResponse(
             url: url,
@@ -439,7 +427,6 @@ final class NetworkServiceDocumentCRUDTests: XCTestCase {
             tokenProvider: tokenMock
         )
 
-        // Act + Assert
         do {
             try await service.deleteAllDocuments()
             XCTFail("Ожидали NetworkError.serverError, но получили завершение")

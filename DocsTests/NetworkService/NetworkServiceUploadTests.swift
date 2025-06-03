@@ -5,7 +5,7 @@ final class NetworkServiceUploadTests: XCTestCase {
     
     /// 5) Тестируем uploadDocument (multipart/form-data) «хэппи-пасс»
     func testUploadDocument_Successful200_ReturnsDocumentDTO() async throws {
-        // Arrange
+        
         let dummyDoc = DocumentDTO(
             id: UUID(uuidString: "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE")!,
             fileName:       "TestDoc.pdf",
@@ -64,7 +64,6 @@ final class NetworkServiceUploadTests: XCTestCase {
             metadata: createReq
         )
 
-        // Assert
         XCTAssertEqual(returned, dummyDoc)
 
         let lastReq = sessionMock.lastRequest!
