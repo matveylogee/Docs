@@ -38,23 +38,27 @@ final class DocumentInfoRouter: NSObject, DocumentInfoRouterProtocol {
     }
 }
 
-// MARK: – QLPreviewController DataSource & Delegate
+// MARK: - QLPreviewController DataSource & Delegate
 extension DocumentInfoRouter: QLPreviewControllerDataSource, QLPreviewControllerDelegate {
     func numberOfPreviewItems(in _: QLPreviewController) -> Int { previewURL == nil ? 0 : 1 }
     
-    func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
+    func previewController(_ controller: QLPreviewController,
+                           previewItemAt index: Int) -> QLPreviewItem {
         return previewURL! as NSURL
     }
     
-    func previewController(_ controller: QLPreviewController, transitionViewFor item: QLPreviewItem) -> UIView? {
+    func previewController(_ controller: QLPreviewController,
+                           transitionViewFor item: QLPreviewItem) -> UIView? {
         transitionView
     }
     
-    func previewController(_ controller: QLPreviewController, editingModeFor previewItem: QLPreviewItem) -> QLPreviewItemEditingMode {
+    func previewController(_ controller: QLPreviewController,
+                           editingModeFor previewItem: QLPreviewItem) -> QLPreviewItemEditingMode {
         .updateContents
     }
     
-    func previewController(_ controller: QLPreviewController, didUpdateContentsOf previewItem: QLPreviewItem) {
+    func previewController(_ controller: QLPreviewController,
+                           didUpdateContentsOf previewItem: QLPreviewItem) {
         if let docVC = viewController as? DocumentInfoViewController {
             docVC.renderThumbnail()
         }

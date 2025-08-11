@@ -13,15 +13,12 @@ protocol RegistrationRouterProtocol: AnyObject {
 
 final class RegistrationRouter: RegistrationRouterProtocol {
     
-    private let container: AuthProtocol
+    init() {}
 
-    init(container: AuthProtocol) {
-        self.container = container
-    }
-    
     func showAlert(message: String, from viewController: UIViewController) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         alert.addAction(.init(title: "ОК", style: .default))
         viewController.present(alert, animated: true)
     }
 }
+

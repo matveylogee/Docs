@@ -8,8 +8,6 @@
 import UIKit
 import QuickLook
 
-// MARK: - Router Protocol
-
 protocol LibraryRouterProtocol: AnyObject {
     func showPreview(for document: DocumentDTO, from transitionView: UIView)
     func share(document: DocumentDTO)
@@ -38,23 +36,21 @@ protocol LibraryRouterProtocol: AnyObject {
     func presentAlert(title: String, message: String?)
 }
 
-// MARK: - Router Implementation
-
 final class LibraryRouter: NSObject, LibraryRouterProtocol {
     
     weak var viewController: LibraryController?
     private var previewURL: URL?
     private weak var transitionView: UIView?
 
-    private let container: DocumentProtocol
+    private let documentFactory: DocumentFactory
     
-    init(container: DocumentProtocol) {
-        self.container = container
+    init(documentFactory: DocumentFactory) {
+        self.documentFactory = documentFactory
+        super.init()
     }
     
     // MARK: - Preview
     func showPreview(for document: DocumentDTO, from transitionView: UIView) {
-        // Формируем локальный URL по имени файла
         let url = FileManager.pdfLibraryURL.appendingPathComponent(document.fileName)
         self.previewURL = url
         self.transitionView = transitionView
@@ -87,7 +83,6 @@ final class LibraryRouter: NSObject, LibraryRouterProtocol {
         let url = FileManager.pdfLibraryURL
             .appendingPathComponent(name)
         
-        // Считаем размер
         let sizeDesc: String = {
             guard let attrs = try? FileManager.default
                     .attributesOfItem(atPath: url.path),
@@ -96,7 +91,6 @@ final class LibraryRouter: NSObject, LibraryRouterProtocol {
             return String(format: "%.0f KB", Double(bytes) / 1024)
         }()
         
-        // Собираем модель для экрана инфо
         let info = DocumentInfo(
             fileURL: url,
             fileName: name,
@@ -110,7 +104,7 @@ final class LibraryRouter: NSObject, LibraryRouterProtocol {
             price:            document.price
         )
         
-        let infoVC = container.makeDocumentInfoController(info: info)
+        let infoVC = documentFactory.makeDocumentInfoController(info: info)
         let nav = UINavigationController(rootViewController: infoVC)
         nav.modalPresentationStyle = .pageSheet
         nav.modalTransitionStyle = .coverVertical
@@ -224,4 +218,3 @@ extension LibraryRouter: QLPreviewControllerDataSource, QLPreviewControllerDeleg
         // при необходимости можно прокинуть уведомление в LibraryController
     }
 }
-

@@ -14,15 +14,15 @@ protocol WelcomeRouterProtocol: AnyObject {
 final class WelcomeRouter: WelcomeRouterProtocol {
     
     private let navigationController: UINavigationController
-    private let container: AuthProtocol
+    private let loginFactory: LoginFactory
 
-    init(navigationController: UINavigationController, container: AuthProtocol) {
+    init(navigationController: UINavigationController, loginFactory: LoginFactory) {
         self.navigationController = navigationController
-        self.container = container
+        self.loginFactory = loginFactory
     }
 
     func navigateToLogin() {
-        let loginVC = container.makeLoginController()
+        let loginVC = loginFactory.makeLoginController()
         navigationController.pushViewController(loginVC, animated: true)
     }
 }

@@ -27,6 +27,13 @@
 		BA6CA30A2DD7E407006451C9 /* DocumentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6CA3092DD7E407006451C9 /* DocumentRouter.swift */; };
 		BA7FD65D2DCF7FF500F7AF4C /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7FD65C2DCF7FF500F7AF4C /* EmptyStateView.swift */; };
 		BA7FD7212DD1068C00F7AF4C /* LibraryContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7FD7202DD1068C00F7AF4C /* LibraryContextMenu.swift */; };
+		BA813A332E4A3148007358F7 /* AppServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA813A322E4A3148007358F7 /* AppServices.swift */; };
+		BA813A372E4A3177007358F7 /* AppRootContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA813A362E4A3177007358F7 /* AppRootContainer.swift */; };
+		BA813A392E4A31A2007358F7 /* AuthContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA813A382E4A31A2007358F7 /* AuthContainer.swift */; };
+		BA813A3B2E4A31BD007358F7 /* MainContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA813A3A2E4A31BD007358F7 /* MainContainer.swift */; };
+		BA813A3D2E4A31D6007358F7 /* MenuContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA813A3C2E4A31D6007358F7 /* MenuContainer.swift */; };
+		BA813A3F2E4A31F0007358F7 /* LibraryContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA813A3E2E4A31F0007358F7 /* LibraryContainer.swift */; };
+		BA813A412E4A3214007358F7 /* SettingsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA813A402E4A3214007358F7 /* SettingsContainer.swift */; };
 		BA9E51592DDCAE5400834B1B /* DocumentInfoRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9E51582DDCAE5400834B1B /* DocumentInfoRouter.swift */; };
 		BA9E515B2DDCD02400834B1B /* ProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9E515A2DDCD02400834B1B /* ProfileDetailViewController.swift */; };
 		BA9E515D2DDCD03B00834B1B /* ThemeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9E515C2DDCD03B00834B1B /* ThemeSelectionViewController.swift */; };
@@ -46,11 +53,9 @@
 		BAAE15B32D3195430046A9E9 /* ViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAE15B22D3195430046A9E9 /* ViewType.swift */; };
 		BAC2FDB22BAEE5F700AB6D3F /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2FDB12BAEE5F700AB6D3F /* LibraryViewController.swift */; };
 		BAC2FDB42BAEE62000AB6D3F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2FDB32BAEE62000AB6D3F /* SettingsViewController.swift */; };
-		BAC2FDB82BAEE74100AB6D3F /* TabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2FDB72BAEE74100AB6D3F /* TabController.swift */; };
 		BAC2FDBB2BAEF84600AB6D3F /* LibraryCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2FDBA2BAEF84600AB6D3F /* LibraryCustomCell.swift */; };
 		BAD0F74D2DD2980100F438D9 /* DocumentInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD0F74C2DD2980100F438D9 /* DocumentInfoViewController.swift */; };
 		BAD0F74F2DD4D1DD00F438D9 /* DocumentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD0F74E2DD4D1DD00F438D9 /* DocumentInfo.swift */; };
-		BAD0F80E2DD4DCD900F438D9 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD0F80D2DD4DCD900F438D9 /* AppDIContainer.swift */; };
 		BAD0F8112DD4DE3200F438D9 /* WelcomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD0F8102DD4DE3200F438D9 /* WelcomeRouter.swift */; };
 		BAD0F8162DD4E47E00F438D9 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD0F8152DD4E47E00F438D9 /* LoginRouter.swift */; };
 		BAD0F97A2DD512B700F438D9 /* LibraryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD0F9792DD512B700F438D9 /* LibraryRouter.swift */; };
@@ -79,7 +84,6 @@
 		BAE377F82DE269F8003859B6 /* APIErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE377F72DE269F8003859B6 /* APIErrorResponse.swift */; };
 		BAE377FA2DE2720E003859B6 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE377F92DE2720E003859B6 /* KeychainService.swift */; };
 		BAE377FC2DE278FF003859B6 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE377FB2DE278FF003859B6 /* Notifications.swift */; };
-		BAE378A82DE33C64003859B6 /* DIContainerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE378A72DE33C64003859B6 /* DIContainerProtocols.swift */; };
 		BAE378AA2DE33ECA003859B6 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE378A92DE33ECA003859B6 /* ProfileTableViewCell.swift */; };
 		BAE378AE2DE38193003859B6 /* EmptyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE378AD2DE38193003859B6 /* EmptyResponse.swift */; };
 		BAE378B02DE381BA003859B6 /* CreateDocumentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE378AF2DE381BA003859B6 /* CreateDocumentRequest.swift */; };
@@ -130,6 +134,13 @@
 		BA6CA3092DD7E407006451C9 /* DocumentRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentRouter.swift; sourceTree = "<group>"; };
 		BA7FD65C2DCF7FF500F7AF4C /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		BA7FD7202DD1068C00F7AF4C /* LibraryContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryContextMenu.swift; sourceTree = "<group>"; };
+		BA813A322E4A3148007358F7 /* AppServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppServices.swift; sourceTree = "<group>"; };
+		BA813A362E4A3177007358F7 /* AppRootContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootContainer.swift; sourceTree = "<group>"; };
+		BA813A382E4A31A2007358F7 /* AuthContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthContainer.swift; sourceTree = "<group>"; };
+		BA813A3A2E4A31BD007358F7 /* MainContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainer.swift; sourceTree = "<group>"; };
+		BA813A3C2E4A31D6007358F7 /* MenuContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuContainer.swift; sourceTree = "<group>"; };
+		BA813A3E2E4A31F0007358F7 /* LibraryContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryContainer.swift; sourceTree = "<group>"; };
+		BA813A402E4A3214007358F7 /* SettingsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContainer.swift; sourceTree = "<group>"; };
 		BA9E51582DDCAE5400834B1B /* DocumentInfoRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentInfoRouter.swift; sourceTree = "<group>"; };
 		BA9E515A2DDCD02400834B1B /* ProfileDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewController.swift; sourceTree = "<group>"; };
 		BA9E515C2DDCD03B00834B1B /* ThemeSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSelectionViewController.swift; sourceTree = "<group>"; };
@@ -149,11 +160,9 @@
 		BAAE15B22D3195430046A9E9 /* ViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewType.swift; sourceTree = "<group>"; };
 		BAC2FDB12BAEE5F700AB6D3F /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		BAC2FDB32BAEE62000AB6D3F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		BAC2FDB72BAEE74100AB6D3F /* TabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabController.swift; sourceTree = "<group>"; };
 		BAC2FDBA2BAEF84600AB6D3F /* LibraryCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCustomCell.swift; sourceTree = "<group>"; };
 		BAD0F74C2DD2980100F438D9 /* DocumentInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentInfoViewController.swift; sourceTree = "<group>"; };
 		BAD0F74E2DD4D1DD00F438D9 /* DocumentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentInfo.swift; sourceTree = "<group>"; };
-		BAD0F80D2DD4DCD900F438D9 /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
 		BAD0F8102DD4DE3200F438D9 /* WelcomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeRouter.swift; sourceTree = "<group>"; };
 		BAD0F8152DD4E47E00F438D9 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
 		BAD0F9792DD512B700F438D9 /* LibraryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryRouter.swift; sourceTree = "<group>"; };
@@ -185,7 +194,6 @@
 		BAE377F72DE269F8003859B6 /* APIErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIErrorResponse.swift; sourceTree = "<group>"; };
 		BAE377F92DE2720E003859B6 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		BAE377FB2DE278FF003859B6 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
-		BAE378A72DE33C64003859B6 /* DIContainerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainerProtocols.swift; sourceTree = "<group>"; };
 		BAE378A92DE33ECA003859B6 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		BAE378AD2DE38193003859B6 /* EmptyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyResponse.swift; sourceTree = "<group>"; };
 		BAE378AF2DE381BA003859B6 /* CreateDocumentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDocumentRequest.swift; sourceTree = "<group>"; };
@@ -303,6 +311,7 @@
 		BA6CA3072DD7E3DD006451C9 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				BA813A382E4A31A2007358F7 /* AuthContainer.swift */,
 				BAD0F8102DD4DE3200F438D9 /* WelcomeRouter.swift */,
 				BAD0F8152DD4E47E00F438D9 /* LoginRouter.swift */,
 				BAE377332DE2095A003859B6 /* RegistrationRouter.swift */,
@@ -313,6 +322,7 @@
 		BA6CA3082DD7E3E8006451C9 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				BA813A3C2E4A31D6007358F7 /* MenuContainer.swift */,
 				BAADFBD92D8CEBCA003ABB28 /* MenuRouter.swift */,
 				BA6CA3092DD7E407006451C9 /* DocumentRouter.swift */,
 			);
@@ -322,6 +332,7 @@
 		BA6CA30B2DD7E40F006451C9 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				BA813A3E2E4A31F0007358F7 /* LibraryContainer.swift */,
 				BAD0F9792DD512B700F438D9 /* LibraryRouter.swift */,
 				BA9E51582DDCAE5400834B1B /* DocumentInfoRouter.swift */,
 			);
@@ -515,9 +526,9 @@
 			children = (
 				BAE179182B98C04200CCE9AB /* AppDelegate.swift */,
 				BAE1791A2B98C04200CCE9AB /* SceneDelegate.swift */,
-				BAD0F80D2DD4DCD900F438D9 /* AppDIContainer.swift */,
-				BAE378A72DE33C64003859B6 /* DIContainerProtocols.swift */,
-				BAC2FDB72BAEE74100AB6D3F /* TabController.swift */,
+				BA813A322E4A3148007358F7 /* AppServices.swift */,
+				BA813A362E4A3177007358F7 /* AppRootContainer.swift */,
+				BA813A3A2E4A31BD007358F7 /* MainContainer.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -705,6 +716,7 @@
 		BAE378CB2DE8D18E003859B6 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				BA813A402E4A3214007358F7 /* SettingsContainer.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -837,6 +849,7 @@
 				BAAE15AF2D303E2F0046A9E9 /* RegistrationViewController.swift in Sources */,
 				BAADFBDA2D8CEBCA003ABB28 /* MenuRouter.swift in Sources */,
 				BAE378BD2DE3B026003859B6 /* LibraryViewModel.swift in Sources */,
+				BA813A412E4A3214007358F7 /* SettingsContainer.swift in Sources */,
 				BA7FD7212DD1068C00F7AF4C /* LibraryContextMenu.swift in Sources */,
 				BA0F68A92BA70D0C00DD6B48 /* PDFCreatePersonalInfo.swift in Sources */,
 				BAEAC1DE2DC6816E00DE56F4 /* UIView+AppGradient.swift in Sources */,
@@ -860,6 +873,7 @@
 				BAE378C82DE62182003859B6 /* UpdateUserDTO.swift in Sources */,
 				BAE377F42DE260F5003859B6 /* RegistrationViewModel.swift in Sources */,
 				BAE378BF2DE4A279003859B6 /* AuthTokenStorage.swift in Sources */,
+				BA813A332E4A3148007358F7 /* AppServices.swift in Sources */,
 				BAE377F82DE269F8003859B6 /* APIErrorResponse.swift in Sources */,
 				BAE378AA2DE33ECA003859B6 /* ProfileTableViewCell.swift in Sources */,
 				BAE179362B9920FD00CCE9AB /* UILabel + Extensions.swift in Sources */,
@@ -876,8 +890,8 @@
 				BAA3A3D52D89D8AF00997F81 /* HeaderView.swift in Sources */,
 				BA6CA30A2DD7E407006451C9 /* DocumentRouter.swift in Sources */,
 				BA167BAB2DCE41520024F1D2 /* ViewGradient.swift in Sources */,
-				BAC2FDB82BAEE74100AB6D3F /* TabController.swift in Sources */,
 				BA0F68AD2BA72F3500DD6B48 /* Resources.swift in Sources */,
+				BA813A3F2E4A31F0007358F7 /* LibraryContainer.swift in Sources */,
 				BAE377FC2DE278FF003859B6 /* Notifications.swift in Sources */,
 				BAE377EA2DE25F21003859B6 /* RegisterRequest.swift in Sources */,
 				BAA3A3CC2D89D6C400997F81 /* BannerCell.swift in Sources */,
@@ -886,17 +900,16 @@
 				BA7FD65D2DCF7FF500F7AF4C /* EmptyStateView.swift in Sources */,
 				BAE378B62DE38568003859B6 /* DocumentEndpoint.swift in Sources */,
 				BA167BA92DCBA8F90024F1D2 /* WelcomeViewController.swift in Sources */,
-				BAE378A82DE33C64003859B6 /* DIContainerProtocols.swift in Sources */,
 				BAAE15B12D303E4A0046A9E9 /* LoginViewController.swift in Sources */,
 				BAE377EE2DE25F4C003859B6 /* UserPublic.swift in Sources */,
 				BAA3A3CE2D89D6F500997F81 /* MainLicenseCell.swift in Sources */,
 				BA0F68A72BA70A2500DD6B48 /* PDFAddPhotoText.swift in Sources */,
-				BAD0F80E2DD4DCD900F438D9 /* AppDIContainer.swift in Sources */,
 				BAC2FDBB2BAEF84600AB6D3F /* LibraryCustomCell.swift in Sources */,
 				BAD0F74D2DD2980100F438D9 /* DocumentInfoViewController.swift in Sources */,
 				BAADF9F62D8C68C4003ABB28 /* MainLicensesInfoViewController.swift in Sources */,
 				BAA3A3C82D89D2EB00997F81 /* MenuCollectionSections.swift in Sources */,
 				BA0F68812BA6F74200DD6B48 /* PDFAddLine.swift in Sources */,
+				BA813A392E4A31A2007358F7 /* AuthContainer.swift in Sources */,
 				BAE1793A2B99244600CCE9AB /* InfoTextField.swift in Sources */,
 				BAE179192B98C04200CCE9AB /* AppDelegate.swift in Sources */,
 				BA9E515B2DDCD02400834B1B /* ProfileDetailViewController.swift in Sources */,
@@ -908,7 +921,10 @@
 				BAAE15B32D3195430046A9E9 /* ViewType.swift in Sources */,
 				BAA3A3C62D89D23B00997F81 /* UIColor+Extensions.swift in Sources */,
 				BAE377D92DE25D10003859B6 /* NetworkService.swift in Sources */,
+				BA813A3B2E4A31BD007358F7 /* MainContainer.swift in Sources */,
 				BAE377F62DE26127003859B6 /* EmptyRequest.swift in Sources */,
+				BA813A372E4A3177007358F7 /* AppRootContainer.swift in Sources */,
+				BA813A3D2E4A31D6007358F7 /* MenuContainer.swift in Sources */,
 				BA6934982BA0941C000A5341 /* UIView + Extensions.swift in Sources */,
 				BAD0F74F2DD4D1DD00F438D9 /* DocumentInfo.swift in Sources */,
 				BAFA3E992D87253E007ACD38 /* UIView+Extensions.swift in Sources */,

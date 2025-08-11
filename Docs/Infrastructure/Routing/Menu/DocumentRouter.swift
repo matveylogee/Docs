@@ -18,13 +18,12 @@ protocol DocumentRouterProtocol: AnyObject {
 final class DocumentRouter: NSObject, DocumentRouterProtocol {
     
     weak var viewController: UIViewController?
-    private let container: DocumentProtocol
     
     private var previewURL: URL?
     private weak var transitionView: UIView?
     
-    init(container: DocumentProtocol) {
-        self.container = container
+    override init() {
+        super.init()
     }
     
     // MARK: - Preview

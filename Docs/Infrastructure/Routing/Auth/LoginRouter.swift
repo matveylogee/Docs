@@ -14,22 +14,22 @@ protocol LoginRouterProtocol: AnyObject {
 }
 
 final class LoginRouter: LoginRouterProtocol {
-    
-    private let container: AuthProtocol
+    private weak var navigationController: UINavigationController?
+    private let registrationFactory: RegistrationFactory
+    private let onLoginSuccess: () -> Void
 
-    init(container: AuthProtocol) {
-        self.container = container
+    init(navigationController: UINavigationController?, registrationFactory: RegistrationFactory, onLoginSuccess: @escaping () -> Void) {
+        self.navigationController = navigationController
+        self.registrationFactory = registrationFactory
+        self.onLoginSuccess = onLoginSuccess
     }
     
     func navigateToMenu(from viewController: UIViewController) {
-        guard let nav = viewController.navigationController else { return }
-        let tabBarController = container.makeTabController()
-        nav.setNavigationBarHidden(true, animated: false)
-        nav.pushViewController(tabBarController, animated: true)
+        onLoginSuccess()
     }
     
     func navigateToRegistration(from viewController: UIViewController) {
-        let signUpController = container.makeRegistrationViewController()
+        let signUpController = registrationFactory.makeRegistrationViewController()
         let nav = UINavigationController(rootViewController: signUpController)
         nav.setNavigationBarHidden(false, animated: false)
         nav.modalPresentationStyle = .pageSheet

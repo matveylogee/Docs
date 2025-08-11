@@ -15,14 +15,14 @@ protocol MenuRouterProtocol: AnyObject {
 final class MenuRouter: MenuRouterProtocol {
     
     weak var viewController: UIViewController?
-    private let container: DocumentProtocol
+    private let documentFactory: DocumentFactory
 
-    init(container: DocumentProtocol) {
-        self.container = container
+    init(documentFactory: DocumentFactory) {
+        self.documentFactory = documentFactory
     }
 
     func navigateToDocument(fileType: DocumentType) {
-        let documentVC = container.makeDocumentController(fileType: fileType)
+        let documentVC = documentFactory.makeDocumentController(fileType: fileType)
         viewController?.navigationController?.pushViewController(documentVC, animated: true)
     }
 
@@ -30,8 +30,7 @@ final class MenuRouter: MenuRouterProtocol {
         let infoVC = MainLicensesInfoViewController()
         let nav = UINavigationController(rootViewController: infoVC)
         nav.modalPresentationStyle = .pageSheet
-        if let sheet = nav.sheetPresentationController { sheet.detents = [.large()] }  
+        if let sheet = nav.sheetPresentationController { sheet.detents = [.large()] }
         viewController?.present(nav, animated: true)
     }
-
 }
